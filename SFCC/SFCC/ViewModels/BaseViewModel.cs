@@ -7,12 +7,14 @@ using Xamarin.Forms;
 
 using SFCC.Models;
 using SFCC.Services;
+using SFCC.Common.Models;
+using SFCC.Common.Abstractions;
 
 namespace SFCC.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public IDataStore<ToDoItem> DataStore => DependencyService.Get<IDataStore<ToDoItem>>() ?? new MockDataStore();
 
         bool isBusy = false;
         public bool IsBusy

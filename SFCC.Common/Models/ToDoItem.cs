@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace SFCC.Models
+namespace SFCC.Common.Models
 {
-    public class Item
+    public class ToDoItem
     {
         public string Id { get; set; }
         public string Text { get; set; }

@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 
 using SFCC.Models;
 using SFCC.ViewModels;
+using SFCC.Common.Models;
 
 namespace SFCC.Views
 {
@@ -24,7 +25,7 @@ namespace SFCC.Views
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new ToDoItem
             {
                 Text = "Item 1",
                 Description = "This is an item description."

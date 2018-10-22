@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-
+using System.Threading.Tasks;
 using Foundation;
+using SFCC.Common.Managers;
 using UIKit;
 
 namespace SFCC.iOS
@@ -22,10 +24,25 @@ namespace SFCC.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            Debugger.Break();
+            LoggingManager.LogException("App_Delegate_TaskSchedulerOnUnobservedTaskException", (Exception)e.Exception);
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Debugger.Break();
+            LoggingManager.LogException("AppDelegate_CurrentDomain_UnhandledException", (Exception)e.ExceptionObject);
         }
     }
 }

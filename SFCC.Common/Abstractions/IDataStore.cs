@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SFCC.Services
+namespace SFCC.Common.Abstractions
 {
     public interface IDataStore<T>
     {

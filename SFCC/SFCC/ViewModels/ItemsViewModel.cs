@@ -7,23 +7,24 @@ using Xamarin.Forms;
 
 using SFCC.Models;
 using SFCC.Views;
+using SFCC.Common.Models;
 
 namespace SFCC.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<ToDoItem> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Items = new ObservableCollection<ToDoItem>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, ToDoItem>(this, "AddItem", async (obj, item) =>
             {
-                var newItem = item as Item;
+                var newItem = item as ToDoItem;
                 Items.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
             });
@@ -52,6 +53,22 @@ namespace SFCC.ViewModels
             finally
             {
                 IsBusy = false;
+            }
+        }
+
+        public ToDoItem SelectedItem
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    App.Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(value)));
+                }
+                OnPropertyChanged();
             }
         }
     }

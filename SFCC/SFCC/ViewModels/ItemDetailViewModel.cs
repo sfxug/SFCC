@@ -1,13 +1,13 @@
 ﻿using System;
-
+using SFCC.Common.Models;
 using SFCC.Models;
 
 namespace SFCC.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public ToDoItem Item { get; set; }
+        public ItemDetailViewModel(ToDoItem item = null)
         {
             Title = item?.Text;
             Item = item;

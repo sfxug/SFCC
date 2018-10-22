@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using SFCC.Models;
 using SFCC.Views;
 using SFCC.ViewModels;
+using SFCC.Common.Models;
 
 namespace SFCC.Views
 {
@@ -25,17 +26,17 @@ namespace SFCC.Views
             BindingContext = viewModel = new ItemsViewModel();
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
-        {
-            var item = args.SelectedItem as Item;
-            if (item == null)
-                return;
+        //async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        //{
+        //    var item = args.SelectedItem as ToDoItem;
+        //    if (item == null)
+        //        return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+        //    await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
 
-            // Manually deselect item.
-            ItemsListView.SelectedItem = null;
-        }
+        //    // Manually deselect item.
+        //    ItemsListView.SelectedItem = null;
+        //}
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {

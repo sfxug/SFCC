@@ -4,12 +4,17 @@
              x:Class="SFCC.App">
     <Application.Resources>
         <ResourceDictionary>
-            <!--Global Styles-->
-            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Colors.xaml" />
+                <ResourceDictionary Source="Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--  Global Styles  -->
+            <!--<Color x:Key="NavigationPrimary">#2196F3</Color>
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
-            </Style>
+            </Style>-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>
