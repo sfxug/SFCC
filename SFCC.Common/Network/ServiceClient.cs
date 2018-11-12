@@ -28,7 +28,6 @@ namespace SFCC.Common.Network
             client.BaseAddress = new Uri(Globals.ApiUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Settings.Instance.UserIdToken);
             client.DefaultRequestHeaders.Add("X-Version", AppVersion);
             client.DefaultRequestHeaders.Add("X-OS", Device.RuntimePlatform);
             client.DefaultRequestHeaders.Add("X-OS-VERSION", Xamarin.Essentials.DeviceInfo.VersionString);
